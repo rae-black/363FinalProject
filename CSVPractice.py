@@ -1,6 +1,8 @@
 import csv
+import datetime
 from datetime import date, time
 import random
+import time
 
 # Selenium imports
 import requests
@@ -41,24 +43,20 @@ with open('C:/Users/raybo/OneDrive/Documents/School/Comp 363/images/fish.csv', m
 
     rowsToWrite = []
 
-    for i in range(1, 100):
+    for i in range(1, 101):
         if i % 25 == 0:
             continue
-        try:
-            element = driver.find_element(By.XPATH, """//*[@id="islrg"]/div[1]/div[%s]/a[1]/div[1]/img""" % i)
-            element.click()
-            imgelement = driver.find_element(By.XPATH, '//*[@id="Sva75c"]/div/div/div[3]/div[2]/c-wiz/div/div[1]/div[1]/div[3]/div/a/img')
-            imgURL = imgelement.get_attribute('src')
-            date = randomDate()
-            time = randomTime()
-            interactions = randomInteractions()
-            rowsToWrite.append([imgURL, date, time, interactions])
 
+        element = driver.find_element(By.XPATH, """//*[@id="islrg"]/div[1]/div[%s]/a[1]/div[1]/img""" % i)
+        element.click()
+        imgelement = driver.find_element(By.XPATH, '//*[@id="Sva75c"]/div/div/div[3]/div[2]/c-wiz/div/div[1]/div[1]/div[3]/div/a/img')
+        imgURL = imgelement.get_attribute('src')
+        post_date = date(2020, random.randrange(1, 12), random.randrange(1, 28))
+        post_time = datetime.time(random.randrange(1, 24), random.randrange(0, 59), random.randrange(0, 59))
+        interactions = random.randrange(0, 1000000)
+        rowsToWrite.append([imgURL, post_date, post_time, interactions])
+        print(len(rowsToWrite))
 
-        except:
-            pass
-
-    print(rowsToWrite)
     fish_writer.writerows(rowsToWrite)
 
     fish.close()
