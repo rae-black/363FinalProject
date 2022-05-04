@@ -21,17 +21,6 @@ query = "fish"
 driver = webdriver.Chrome()
 driver.get('https://images.google.com/')
 
-def randomDate():
-    return date(2020, random.randrange(1, 12), random.randrange(1, 28))
-
-
-def randomTime():
-    return time(random.randrange(1, 24), random.randrange(0, 59), random.randrange(0, 59))
-
-
-def randomInteractions():
-    return random.randrange(0, 1000000)
-
 searchBar = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.CSS_SELECTOR, "input[title='Search']")))
 searchBar.send_keys(query)
@@ -39,7 +28,7 @@ searchBar.send_keys(Keys.RETURN)
 
 with open('C:/Users/raybo/OneDrive/Documents/School/Comp 363/images/fish.csv', mode='w') as fish:
     fish_writer = csv.writer(fish, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    fish_writer.writerow(["Row", "Fish image URL", "Date posted", "Time posted", "Interactions"])
+    fish_writer.writerow(["Row", "Fish image URL", "Date", "Time posted", "Interactions"])
 
     rowsToWrite = []
     row_counter = 1

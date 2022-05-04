@@ -1,4 +1,7 @@
 from CSV_sorting import fish_post_objects
+import csv
+
+path = "C:/Users/raybo/OneDrive/Documents/School/Comp 363/images/fish.csv"
 
 def partition(array, start, end):
     pivot = array[start]
@@ -43,3 +46,15 @@ def quick_sort(array, start, end):
 
 quick_sort(fish_post_objects, 0, len(fish_post_objects) - 1)
 print([fish.index + " : " + fish.interactions for fish in fish_post_objects])
+
+with open(path, mode="w") as fishy:
+    fish_writer = csv.writer(fishy, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    fish_writer.writerow(["Row", "Fish image URL", "Date posted", "Time posted", "Interactions"])
+    row_counter = 1
+    for fish in fish_post_objects:
+        imgURL = fish.imageURL
+        post_date = fish.datePosted
+        post_time = fish.timePosted
+        interactions = fish.interactions
+        fish_writer.writerow([row_counter, imgURL, post_date, post_time, interactions])
+        row_counter += 1
