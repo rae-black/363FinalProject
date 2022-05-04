@@ -1,0 +1,72 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+.title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 50px;
+    color: #5b1f1f;
+    transition: margin-left .5s;
+    text-align: center;
+  }
+  
+  .top_title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 50px;
+    color: #9e3d3d;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  
+  .search {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  #selectedmode {
+    text-decoration: none;
+    width: 100px;
+    padding: 10px 15px;
+    background: #4e5187;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    box-shadow: #9e3d3d 0px 8px 24px;
+    font-family: "Varela Round", sans-serif;
+;
+
+}
+
+#selectedmode:hover{
+    transition: .3s ease-in-out;
+    background: #058298;
+}
+
+#select-mode{
+    padding: 10px 50px;
+    margin: 0 20px;
+    border: none;
+    margin: 0 20px;
+    border: 1px solid #4e5187 !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-family: "Varela Round", sans-serif;
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  text-align: center;
+
+}
+
+strong{
+    line-height: 30px;
+}
+
+.pick-mode{
+    font-family: "Varela Round", sans-serif;
+    color: #9e3d3d;
+}
+
+
