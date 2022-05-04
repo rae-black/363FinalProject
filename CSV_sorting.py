@@ -3,11 +3,14 @@ from csv import reader
 class FishPost:
     def __init__(self, index, imageURL, datePosted, timePosted, interactions):
         self.index = index
-        self.index = index
         self.imageURL = imageURL
         self.datePosted = datePosted
         self.timePosted = timePosted
         self.interactions = interactions
+
+    def compareInteractions(self, fish):
+        return int(self.interactions) - int(fish.interactions)
+        # return < 0 if passed object is greater
 
 
 path = "C:/Users/raybo/OneDrive/Documents/School/Comp 363/images/fish.csv"
@@ -18,11 +21,16 @@ with open(path, 'r') as read_obj:
     for row in csv_reader:
         fish_posts.append(row)
 
-for i in range(int(len(fish_posts)/2)):
-    print(fish_posts[i * 2])
-
 fish_post_objects = []
-for i in range(int(len(fish_posts)/2)):
-    fish_post_objects[i * 2] = FishPost(fish_posts[0], fish_posts[1], fish_posts[2], fish_posts[3], fish_posts[4])
+for i in range(1, int(len(fish_posts)/2)):
+    current_fish_post = fish_posts[i * 2]
+    fish_post_objects.append(FishPost(current_fish_post[0], current_fish_post[1], current_fish_post[2], current_fish_post[3], current_fish_post[4]))
 
-print(fish_post_objects)
+fish_times = []
+fish_dates = []
+fish_interactions = []
+for fish in fish_post_objects:
+    fish_times.append([fish, fish.timePosted])
+    fish_dates.append([fish, fish.datePosted])
+    fish_interactions.append([fish, fish.interactions])
+
